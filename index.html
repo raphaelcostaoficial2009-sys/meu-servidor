@@ -3,23 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="/login" method="POST">
-    <ul>
-        <li><input type="email" name="email" placeholder="E-mail" required></li>
-        <li><input type="password" name="senha" placeholder="Senha" required></li>
-        <li><input type="text" name="cpf" placeholder="CPF" required></li>
 
-        <li><label><input type="radio" name="sexo" value="homem" required> Homem</label></li>
-        <li><label><input type="radio" name="sexo" value="mulher"> Mulher</label></li>
-    </ul>
+    <form action="/login" method="POST" class="form-login">
+        
+        <h1 class="logo">Instagram</h1>
 
-    <button type="submit">Entrar</button>
-</form>
+        <ul>
+            <li>
+                <input
+                    type="text"
+                    name="email"
+                    placeholder="Telefone, nome de usuário ou email"
+                    required
+                >
+            </li>
 
-    
+            <li>
+                <input
+                    type="password"
+                    name="senha"
+                    placeholder="Senha"
+                    required
+                >
+            </li>
+        </ul>
+
+        <button type="submit">Entrar</button>
+
+        <p class="ou">OU</p>
+
+        <a href="#" class="login-fb">Entrar com Facebook</a>
+
+        <a href="#" class="esqueceu-senha">Esqueceu a senha?</a>
+    </form>
+
+    <script src="script.js"></script>
 </body>
 </html>

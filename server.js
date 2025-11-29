@@ -1,28 +1,28 @@
-const express = require("express");
-const path = require("path");
-const app = express();
+// Seleciona o formulário pelo class="form-login"
+const form = document.querySelector(".form-login");
 
-// Permite receber dados do formulário (POST)
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// Evento de envio do formulário
+form.addEventListener("submit", (event) => {
 
-// Permite servir arquivos estáticos (CSS, imagens, JS)
-app.use(express.static(__dirname));
+    const email = form.email.value.trim();
+    const senha = form.senha.value.trim();
 
-// Rota principal → envia o index.html
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
-});
+    // ----- Validação dos campos -----
+    if (!email || !senha) {
+        alert("Preencha todos os campos.");
+        event.preventDefault();
+        return;
+    }
 
-// Rota que recebe o formulário
-app.post("/login", (req, res) => {
-    console.log("📩 Dados recebidos do formulário:");
-    console.log(req.body);
+    // Senha mínima (opcional)
+    if (senha.length < 4) {
+        alert("A senha deve ter pelo menos 4 caracteres.");
+        event.preventDefault();
+        return;
+    }
 
-    res.send("Dados enviados com sucesso!");
-});
-
-// Iniciar servidor
-app.listen(3000, () => {
-    console.log("🚀 Servidor rodando em http://localhost:3000");
+    // ----- Efeito de carregamento -----
+    const botao = form.querySelector("button");
+    botao.innerText = "Entrando...";
+    botao.disabled = true;
 });
